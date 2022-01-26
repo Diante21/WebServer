@@ -28,8 +28,7 @@ db.connect((err) => {
     }else{
         console.log("MYSQL Connected...")
     }
-
-
+    
 })
 
 

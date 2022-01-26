@@ -1,3 +1,7 @@
-body {
-  background-color: orange;
+nav {
+  background-color: hsl(264, 34%, 36%);
+  color: #fff;
+  padding: 30px 60px;
+  display: flex;
+  justify-content: space-between;
 }
