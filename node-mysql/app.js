@@ -1,4 +1,5 @@
 const express = require("express"); 
+const path = require('path'); 
 const mysql = require("mysql"); 
 const dotenv = require('dotenv'); 
 
@@ -14,9 +15,14 @@ const db = mysql.createConnection({
 });
 
 
-app.set('View engine','hbs' ); // View engine to show your html 
 
-db.connect((err) => {       // Connects to server 
+const publicDirectory = path.join(__dirname, './public'); //Gives access to Css page
+app.use(express.static(publicDirectory)); //Grabs static files like 
+
+app.set('view engine','hbs' ); // View engine to show your html 
+
+// Connects to server 
+db.connect((err) => {      
     if(err){
         console.log(err)
     }else{
@@ -28,7 +34,8 @@ db.connect((err) => {       // Connects to server
 
 
 app.get("/", (req, res) => {
-    res.send("<h1>Home Page</h1>"); 
+   // res.send("<h1>Home Page</h1>"); 
+   res.render("index");
 }); 
 
 app.listen(3503, () => {
