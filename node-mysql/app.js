@@ -4,7 +4,7 @@ const dotenv = require('dotenv');
 
 dotenv.config({path: './.env'})
 
-const app = express(); 
+const app = express();  
 
 const db = mysql.createConnection({            
     host: process.env.DATABASE_HOST, 
@@ -13,9 +13,10 @@ const db = mysql.createConnection({
     database: process.env.DATABASE
 });
 
+
 app.set('View engine','hbs' ); // View engine to show your html 
 
-db.connect((err) => {
+db.connect((err) => {       // Connects to server 
     if(err){
         console.log(err)
     }else{
@@ -24,6 +25,7 @@ db.connect((err) => {
 
 
 })
+
 
 app.get("/", (req, res) => {
     res.send("<h1>Home Page</h1>"); 
